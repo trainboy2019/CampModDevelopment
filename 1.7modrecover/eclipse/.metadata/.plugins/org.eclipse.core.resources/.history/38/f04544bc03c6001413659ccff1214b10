@@ -1,0 +1,5 @@
+package com.camp.tile_entity;
+
+public class TileEntitySapphireChest {
+
+}

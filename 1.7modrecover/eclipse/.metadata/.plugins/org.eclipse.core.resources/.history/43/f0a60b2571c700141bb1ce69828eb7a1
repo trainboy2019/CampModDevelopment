@@ -1,0 +1,68 @@
+package com.camp.item;
+
+import com.camp.lib.StringLibrary;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.World;
+
+public class Cherry extends ItemFood {
+
+	public Cherry(int p_i45339_1_, float p_i45339_2_, boolean p_i45339_3_) {
+        super(p_i45339_1_, p_i45339_2_, p_i45339_3_);
+        // TODO Auto-generated constructor stub
+        this.setAlwaysEdible();
+        this.bFull3D = true;
+    //    this.getChestGenBase(chest, rnd, original)
+        this.isFull3D();
+        this.setFull3D();
+        this.setTextureName(StringLibrary.MODID + ":cherry");
+    }
+	/*@Override
+	public void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
+	    super.onFoodEaten(stack, world, player);
+	    if(!world.isRemote) {
+	        player.addPotionEffect(new PotionEffect(Potion.moveSlowdown));//(new PotionEffect(Potion.moveSpeed.getId(), 100, 2));
+	    }
+	}*/
+	public ItemStack onEaten(ItemStack p_77654_1_, World p_77654_2_, EntityPlayer p_77654_3_)
+    {
+        if (!p_77654_3_.capabilities.isCreativeMode)
+        {
+            --p_77654_1_.stackSize;
+        }
+
+        if (!p_77654_2_.isRemote)
+        {
+            p_77654_3_.curePotionEffects(p_77654_1_);
+        }
+
+        return p_77654_1_.stackSize <= 0 ? new ItemStack(ItemManager.customSeeds) : p_77654_1_;
+    }
+	
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack par1ItemStack)
+	{ return true;
+	}
+	@Override
+	public void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
+	    super.onFoodEaten(stack, world, player);
+	    if(!world.isRemote) {
+	    	int duration = 20*120;
+	        player.addPotionEffect(new PotionEffect(Potion.digSlowdown.getId(), duration, 2));
+	        player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.getId(), duration, 2));
+	        player.addPotionEffect(new PotionEffect(Potion.damageBoost.getId(), duration, 2));
+	        player.addPotionEffect(new PotionEffect(Potion.nightVision.getId(), duration, 2));
+	        player.addPotionEffect(new PotionEffect(Potion.jump.getId(), duration, 2));
+	        player.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), duration, 2));
+	        player.addPotionEffect(new PotionEffect(Potion.resistance.getId(), duration, 1));
+	       ///. player.removePotionEffect(Potion.blindness);
+	    }
+	}
+}

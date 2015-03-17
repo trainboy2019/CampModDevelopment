@@ -1,0 +1,17 @@
+package com.camp.item;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemBlock;
+
+public class ItemLogBlocks extends ItemBlock{
+	
+	public static final String[] Logs = new String[] {"Cherry", "whiteCherry"};
+
+	public ItemLogBlocks(Block block) {
+		super(block);
+		this.setHasSubtypes(true);
+		
+	}
+	
+	
+
+}

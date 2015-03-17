@@ -1,0 +1,97 @@
+package com.camp.block;
+ 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+
+import com.camp.biome.features.NCLog;
+import com.camp.creativetabs.CreativeTabsManager;
+import com.camp.item.ItemLogBlocks;
+import com.camp.item.ItemManager;
+import com.camp.lib.StringLibrary;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+ 
+public class BlockManager {
+ 
+    public static void mainRegistry() {
+        initializeBlock();
+        registerBlock();
+    }
+ 
+    public static Block customBlock;
+    public static Block blockLog;
+    public static Block sapphireChest;
+    public static Block multiBlock;
+    public static Block testPortal;
+    public static Block rubyBlock;
+    public static Block tutorial_ore;
+    public static Block endCoal;
+    public static Block endDiamond;
+    public static Block endIron;
+    public static Block endEmerald;
+    public static Block endGold;
+    public static Block endRuby;
+    public static Block endLapis;
+    public static Block endRedstone;
+    public static Block endQuartz;
+    public static Block netherCoal;
+    public static Block netherDiamond;
+    public static Block netherIron;
+    public static Block netherEmerald;
+    public static Block netherGold;
+    public static Block netherRuby;
+    public static Block netherLapis;
+    public static Block netherRedstone;
+    public static Block overworldQuartz;
+    //public static Block customFarmland;
+    public static Block customBlockCrops;
+ 
+    public static void initializeBlock() {
+    	rubyBlock = new RubyBlock(Material.iron).setBlockName("RubyBlock").setBlockTextureName(StringLibrary.MODID + ":ruby_block").setCreativeTab(CreativeTabsManager.tabBlock);
+        customBlock = new CustomBlock(Material.rock);
+        testPortal = new TestPortal();
+        blockLog = new NCLog().setBlockName("Cherry Log").setCreativeTab(CreativeTabsManager.tabBlock);
+        sapphireChest = new sapphireChest(0).setBlockName("Sapphire Chest").setCreativeTab(CreativeTabsManager.tabBlock);
+        multiBlock = new MultiBlock(Material.rock);
+        //customFarmland = new custom_farmland(Material.ice);
+        customBlockCrops = new CustomBlockCrops().setBlockName("CustomBlockCrops").setBlockTextureName(StringLibrary.MODID + ":custom_block_crops");
+        
+    }
+    //ItemStack gemLapisGem = new ItemStack(Items.dye, 1, 4);
+    public static void registerBlock() {
+        GameRegistry.registerBlock(customBlock, customBlock.getUnlocalizedName());
+        GameRegistry.registerBlock(rubyBlock, rubyBlock.getUnlocalizedName());
+        //GameRegistry.registerBlock(sapphireChest, "sapphireChest");
+        //GameRegistry.registerBlock(testPortal, "testPortal");
+        GameRegistry.registerBlock(blockLog, ItemLogBlocks.class, blockLog.getUnlocalizedName());
+        GameRegistry.registerBlock(endCoal = new EndCoal("endCoal", Material.rock, Items.coal, 2, 4).setHardness(10.0f).setResistance(20.0f), "endCoal");
+        GameRegistry.registerBlock(endDiamond = new EndDiamond("endDiamond", Material.rock, Items.diamond, 2, 4).setHardness(10.0f).setResistance(20.0f), "endDiamond");
+        GameRegistry.registerBlock(endEmerald = new EndEmerald("endEmerald", Material.rock, Items.emerald, 2, 4).setHardness(10.0f).setResistance(20.0f), "endEmerald");
+        GameRegistry.registerBlock(endGold = new EndGold("endGold", Material.rock, Item.getItemFromBlock(BlockManager.endGold), 2, 4).setHardness(10.0f).setResistance(20.0f), "endGold");
+        GameRegistry.registerBlock(endIron = new EndIron("endIron", Material.rock, Item.getItemFromBlock(BlockManager.endIron), 2, 4).setHardness(10.0f).setResistance(20.0f), "endIron");
+        ItemStack gemLapisGem = new ItemStack(Items.dye, 1, 4);
+        GameRegistry.registerBlock(endLapis = new EndLapis("endLapis", Material.rock, gemLapisGem, 2, 4).setHardness(10.0f).setResistance(20.0f), "endLapis");
+        GameRegistry.registerBlock(endRedstone = new EndRedstone("endRedstone", Material.rock, Items.redstone, 2, 4).setHardness(10.0f).setResistance(20.0f), "endRedstone");
+        GameRegistry.registerBlock(endRuby = new EndRuby("endRuby", Material.rock, ItemManager.tutorial_item, 2, 4).setHardness(10.0f).setResistance(20.0f), "endRuby");
+        GameRegistry.registerBlock(endQuartz = new EndQuartz("endQuartz", Material.rock, Items.quartz, 2, 4).setHardness(10.0f).setResistance(20.0f), "endQuartz");
+        GameRegistry.registerBlock(netherCoal = new NetherCoal("netherCoal", Material.rock, Items.coal, 2, 4).setHardness(10.0f).setResistance(20.0f), "netherCoal");
+        GameRegistry.registerBlock(netherDiamond = new NetherDiamond("netherDiamond", Material.rock, Items.diamond, 2, 4).setHardness(10.0f).setResistance(20.0f), "netherDiamond");
+        GameRegistry.registerBlock(netherEmerald = new NetherEmerald("netherEmerald", Material.rock, Items.emerald, 2, 4).setHardness(10.0f).setResistance(20.0f), "netherEmerald");
+        GameRegistry.registerBlock(netherGold = new NetherGold("netherGold", Material.rock, Item.getItemFromBlock(BlockManager.netherGold), 2, 4).setHardness(10.0f).setResistance(20.0f), "netherGold");
+        GameRegistry.registerBlock(netherIron = new NetherIron("netherIron", Material.rock, Item.getItemFromBlock(BlockManager.netherIron), 2, 4).setHardness(10.0f).setResistance(20.0f), "netherIron");
+        GameRegistry.registerBlock(netherLapis = new NetherLapis("netherLapis", Material.rock, gemLapisGem, 2, 4).setHardness(10.0f).setResistance(20.0f), "netherLapis");
+        GameRegistry.registerBlock(netherRedstone = new NetherRedstone("netherRedstone", Material.rock, Items.redstone, 2, 4).setHardness(10.0f).setResistance(20.0f), "netherRedstone");
+        GameRegistry.registerBlock(netherRuby = new NetherRuby("netherRuby", Material.rock, ItemManager.tutorial_item, 2, 4).setHardness(10.0f).setResistance(20.0f), "netherRuby");
+        GameRegistry.registerBlock(overworldQuartz = new OverworldQuartz("overworldQuartz", Material.rock, Items.quartz, 2, 4).setHardness(10.0f).setResistance(20.0f), "overworldQuartz");
+        GameRegistry.registerBlock(tutorial_ore = new ModBlockOre("tutorial_ore", Material.rock, ItemManager.tutorial_item, 2, 4).setHardness(10.0f).setResistance(20.0f), "tutorial_ore");
+        //GameRegistry.registerBlock(tutorial_ore = new ModBlockOre("tutorial_ore", Material.rock, ItemManager.tutorial_item, 2, 4), "tutorial_ore");
+        //GameRegistry.registerBlock(customFarmland, customFarmland.getUnlocalizedName());
+        GameRegistry.registerBlock(customBlockCrops, customBlockCrops.getUnlocalizedName());
+        GameRegistry.registerBlock(multiBlock, multiBlock.getUnlocalizedName());
+    }
+ 
+}
